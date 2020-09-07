@@ -123,7 +123,7 @@ const log=console.log;
 // Creating Article SECTION
 
 
-let article = {title: "some string", date: "11/11/32", p1: "", p2: "", p3:""}
+let article = {title: "some string", date: "11/11/32", firstParagraph: "", secondParagraph: "", thirdParagraph:""}
 
 // Building the Component SECTION
 
@@ -140,28 +140,35 @@ const articleMaker = (article) => {
 
   // adding HTML structure
 
-  articleDiv.appendChild(title, date, firstPara, secondPara, thirdPara, button);
+  articleDiv.append(title, date, firstPara, secondPara, thirdPara, button);
 
   // giving class names
   articleDiv.classList.add('article')
   date.classList.add('date');
-  firstPara.classList.add('firstPara');
-  secondPara.classList.add('secondPara');
-  thirdPara.classList.add('thirdPara');
   button.classList.add('expandButton')
   
   // add Content
   title.textContent = article.title;
   date.textContent = article.date;
-  firstPara.textContent = article.p1;
-  secondPara.textContent = article.p2;
-  thirdPara.textContent = article.p3;
+  firstPara.textContent = article.firstParagraph;
+  secondPara.textContent = article.secondParagraph;
+  thirdPara.textContent = article.thirdParagraph;
+  button.textContent = "Expand +"
+
+  // adding eventListeners
+  button.addEventListener("click", ()=> {
+    articleDiv.classList.toggle('article-open');
+  })
 
 
- return articleMaker;
+ return articleDiv;
 }
 
 
 // Attaching my component to the DOM SECTION
+
 const divArticle = document.querySelector('.articles');
-divArticle.appendChild(articleMaker(article));
+data.unshift(article)
+data.map(el =>
+  divArticle.appendChild(articleMaker(el))
+  );
