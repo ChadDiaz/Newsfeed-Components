@@ -168,7 +168,10 @@ const articleMaker = (article) => {
 // Attaching my component to the DOM SECTION
 
 const divArticle = document.querySelector('.articles');
+
+
 data.unshift(article)
+
 data.map(el =>
   divArticle.appendChild(articleMaker(el))
   );
