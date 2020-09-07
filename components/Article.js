@@ -1,6 +1,7 @@
 // This is the data we will be using to create our articles. Look at it, then proceed to line 93.
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
+// eslint-disable-next-line no-unused-vars
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -98,7 +99,9 @@ const data = [
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
-    {three separate paragraph elements}
+    <p class="firstPara"></p>
+    <p class="secondPara"></p>
+    <p class="thirdPara"></p>
 
     <span class="expandButton">+</span>
   </div>
@@ -114,3 +117,51 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+// eslint-disable-next-line no-unused-vars
+const log=console.log;
+
+// Creating Article SECTION
+
+
+let article = {title: "some string", date: "11/11/32", p1: "", p2: "", p3:""}
+
+// Building the Component SECTION
+
+const articleMaker = (article) => {
+  
+  // creating elements
+  const articleDiv=document.createElement('div')
+  const title = document.createElement('h2');
+  const date=document.createElement('p');
+  const firstPara=document.createElement('p')
+  const secondPara = document.createElement('p')
+  const thirdPara = document.createElement('p');
+  const button = document.createElement('span');
+
+  // adding HTML structure
+
+  articleDiv.appendChild(title, date, firstPara, secondPara, thirdPara, button);
+
+  // giving class names
+  articleDiv.classList.add('article')
+  date.classList.add('date');
+  firstPara.classList.add('firstPara');
+  secondPara.classList.add('secondPara');
+  thirdPara.classList.add('thirdPara');
+  button.classList.add('expandButton')
+  
+  // add Content
+  title.textContent = article.title;
+  date.textContent = article.date;
+  firstPara.textContent = article.p1;
+  secondPara.textContent = article.p2;
+  thirdPara.textContent = article.p3;
+
+
+ return articleMaker;
+}
+
+
+// Attaching my component to the DOM SECTION
+const divArticle = document.querySelector('.articles');
+divArticle.appendChild(articleMaker(article));
