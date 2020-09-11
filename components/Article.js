@@ -123,7 +123,7 @@ const log=console.log;
 // Creating Article SECTION
 
 
-let article = {title: "some string", date: "11/11/32", firstParagraph: "", secondParagraph: "", thirdParagraph:""}
+const article = {title: "some string", date: "11/11/32", firstParagraph: "lorem ipmsom", secondParagraph: "lorem ipsum", thirdParagraph:"lorem ipsum"}
 
 // Building the Component SECTION
 
@@ -172,6 +172,6 @@ const divArticle = document.querySelector('.articles');
 
 data.unshift(article)
 
-data.map(el =>
+data.forEach(el =>
   divArticle.appendChild(articleMaker(el))
   );
